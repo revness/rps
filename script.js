@@ -13,39 +13,51 @@ function getPlayerChoice() {
 let playerScore = 0;
 let computerScore = 0;
 let ties = 0;
-
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     ties++;
-    return "its a tie";
+
+    gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
   }
   if (playerSelection === "rock") {
     if (computerSelection === "paper") {
       computerScore++;
+      gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
     } else {
       playerScore++;
+      gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
     }
   }
   if (playerSelection === "paper") {
     if (computerSelection === "scissors") {
       computerScore++;
+      gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
     } else {
       playerScore++;
+      gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
     }
   }
   if (playerSelection === "scissors") {
     if (computerSelection === "rock") {
       computerScore++;
+      gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
     } else {
       playerScore++;
+      gameStatus.textContent = `Tie! You both chose ${playerSelection}, player score: ${playerScore}, computer score: ${computerScore}, ties: ${ties}`;
     }
   }
 }
-for (let i = 0; i < 1000000; i++) {
-  const playerSelection = getPlayerChoice();
-  const computerSelection = getComputerChoice();
-  playRound(playerSelection, computerSelection);
-}
-console.log("player score: " + playerScore);
-console.log("computer score: " + computerScore);
-console.log("ties: " + ties);
+
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
+
+btnRock.addEventListener("click", () => {
+  playRound("rock", getComputerChoice());
+});
+btnPaper.addEventListener("click", () => {
+  playRound("paper", getComputerChoice());
+});
+btnScissors.addEventListener("click", () => {
+  playRound("scissors", getComputerChoice());
+});
